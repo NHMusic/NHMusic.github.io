@@ -15,9 +15,9 @@
     </select>
     <video id="music"></video>
     <script>
-       document.querySelector('#music').src=document.querySelector('select').value;
+      document.querySelector('#music').src='Video/'+document.querySelector('select').value;
       document.querySelector('select').onchange=function(){
-        document.querySelector('#music').src=document.querySelector('select').value;
+        document.querySelector('#music').src='Video/'+document.querySelector('select').value;
       };
     </script>
   </body>
