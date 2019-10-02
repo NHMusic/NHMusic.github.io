@@ -59,7 +59,6 @@
     </select><br>
     <video controls id="music"></video>
     <script>
-      window.addEventListener('resize', onresize);
       function onresize(){
         document.querySelector('.select-css').style.marginLeft=((window.innerWidth/2)-100).toString()+'px';
       }
@@ -67,6 +66,7 @@
       document.querySelector('select').onchange=function(){
         document.querySelector('#music').src='Video/'+document.querySelector('select').value;
       };
+      window.addEventListener('resize', onresize);
     </script>
   </body>
 </html>
