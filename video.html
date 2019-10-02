@@ -1,0 +1,24 @@
+<html>
+  <style>
+    body{
+      background:#0665A2;
+    }
+    video{
+      width:90%;
+    }
+  </style>
+  <body>
+    <select value="New Comp 3.mp4">
+      <option value="Minimalist.mp4">Minimalist 1</option>
+      <option value="New Comp 3.mp4">Minimalist 2</option>
+      <option value="Sonata Form.mp4">Sonata Form</option>
+    </select>
+    <video id="music"></video>
+    <script>
+       document.querySelector('#music').src=document.querySelector('select').value;
+      document.querySelector('select').onchange=function(){
+        document.querySelector('#music').src=document.querySelector('select').value;
+      };
+    </script>
+  </body>
+</html>
