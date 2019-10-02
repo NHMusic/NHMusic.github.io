@@ -2,7 +2,6 @@
   <style>
     body{
       background:#0665A2;
-      margin-left:5%;
       text-align:center;
     }
     .select-css {
@@ -49,6 +48,7 @@
     video{
       border-radius:5px;
       width:90%;
+      margin-left:5%;
     }
   </style>
   <body>
@@ -59,6 +59,10 @@
     </select><br>
     <video controls id="music"></video>
     <script>
+      window.addEventListener('resize', onresize);
+      function onresize(){
+        document.querySelector('.select-css').style.marginLeft=((window.innerWidth/2)-100).toString()+'px';
+      }
       document.querySelector('#music').src='Video/'+document.querySelector('select').value;
       document.querySelector('select').onchange=function(){
         document.querySelector('#music').src='Video/'+document.querySelector('select').value;
