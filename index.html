@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Screen Split</title>
+  <style>
+  body{
+    margin:0;
+    padding:0;
+    font-size:100%;
+    line-height: 1.6;
+  }
+  
+  #wrapper{
+    position: relative;
+    width:100%;
+    min-height:55vw;
+    overflow: hidden;
+  }
+  
+  .layer{
+    position: absolute;
+    width:100vw;
+    min-height: 55vw;
+    overflow: hidden;
+  }
+  
+  .layer .content-wrap{
+    position: absolute;
+    width:100vw;
+    min-height: 55vw;
+  }
+  
+  .layer .content-body{
+    width:25%;
+    position:absolute;
+    top:50%;
+    text-align: center;
+    transform:translateY(-50%);
+    color:#fff;
+  }
+  
+  .layer h1{
+    font-size:6em;
+  }
+  
+  .bottom{
+    background:#ed3b56;
+    z-index:1;
+  }
+  
+  .bottom .content-body{
+    margin: auto;
+    width: 50%;
+  }
+  
+  .bottom h1{
+    width: 800px;
+    padding-left: 50px;
+    font-family: 'Bowlby One SC', cursive;
+    color:#fcfffe;
+  }
+  
+  .top{
+    background:#3a3192;
+    z-index:2;
+    width:50vw;
+  }
+
+  .top h1 {
+    font-family: 'Righteous', cursive;
+  }
+  
+  .top .content-body{
+    margin: auto;
+    width: 50%;
+  }
+  
+  .handle{
+    position: absolute;
+    height: 100%;
+    display: block;
+    background-color: #fcfffe;
+    width:5px;
+    top:0;
+    left: 50%;
+    z-index:3;
+  }
+  
+  .skewed .handle{
+    top:50%;
+    transform:rotate(30deg) translateY(-50%);
+    height: 200%;
+    transform-origin:top;
+  }
+  
+  .skewed .top{
+    transform: skew(-30deg);
+    margin-left:-1000px;
+    width: calc(50vw + 1000px);
+  }
+  
+  .skewed .top .content-wrap{
+    transform: skew(30deg);
+    margin-left:1000px;
+  }
+</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC|Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <section id="wrapper" class="skewed">
+        <div class="layer bottom">
+            <a href="https://nhmusic.github.io/video.html"><div class="content-wrap">
+                <div style="position:absolute;right:20%;" class="content-body">
+                    <h1>Videos</h1>
+                </div>
+          </div></a>
+
+            <a href="https://nhmusic.github.io/music.html"><div class="layer top">
+                <div class="content-wrap">
+                    <div class="content-body">
+                        <h1>Music</h1>
+                    </div>
+                </div>
+              </div></a>
+        </div>
+        <div class="handle"></div>
+    </section>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    let wrapper = document.getElementById('wrapper');
+    let topLayer = wrapper.querySelector('.top');
+    let handle = wrapper.querySelector('.handle');
+    let skew = 0;
+    let delta = 0;
+
+    if (wrapper.className.indexOf('skewed') != -1) {
+        skew = 1000;
+    }
+
+    wrapper.addEventListener('mousemove', function (e) {
+        delta = (e.clientX - window.innerWidth / 2) * 0.5;
+
+        handle.style.left = e.clientX + delta + 'px';
+
+        topLayer.style.width = e.clientX + skew + delta + 'px';
+    });
+});</script>
+</body>
+</html>
