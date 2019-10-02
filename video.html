@@ -56,7 +56,7 @@
       <option value="New Comp 3.mp4">Minimalist 2</option>
       <option value="Sonata Form.mp4">Sonata Form</option>
     </select><br>
-    <video id="music"></video>
+    <video controls id="music"></video>
     <script>
       document.querySelector('#music').src='Video/'+document.querySelector('select').value;
       document.querySelector('select').onchange=function(){
