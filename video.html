@@ -62,6 +62,7 @@
       function onresize(){
         document.querySelector('.select-css').style.marginLeft=((window.innerWidth/2)-100).toString()+'px';
       }
+      onresize();
       document.querySelector('#music').src='Video/'+document.querySelector('select').value;
       document.querySelector('select').onchange=function(){
         document.querySelector('#music').src='Video/'+document.querySelector('select').value;
